@@ -1,0 +1,12 @@
+#!/bin/bash
+scriptlocation=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+if [[ "$1" =~ ^(.+):[0-9]{1,6}$ ]]; then
+    expiration_days=$($scriptlocation/get_certificte_expiration_days.sh $1)
+    echo "Expirering in $expiration_days days should be less then 5"
+    if [ "5" -gt "$expiration_days" ]; then
+        echo "Expirering soon run cmd: \"${@:2}\""
+        ${@:2}
+    else
+        echo "do nothing"
+    fi
+fi
