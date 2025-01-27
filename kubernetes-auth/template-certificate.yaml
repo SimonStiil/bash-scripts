@@ -1,0 +1,10 @@
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: USERNAMEFORREPLACEMENT
+spec:
+  request: REQUESTFORREPLACEMENT
+  signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 315569260  # 10-year 
+  usages:
+  - client auth
